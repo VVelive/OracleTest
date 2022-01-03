@@ -1,0 +1,25 @@
+Deployment tasks:
+
+
+
+SELECT 'alter '|| type ||' '||owner||'.'|| name ||' compile;' from dba_dependencies where referenced_name='BMS_CUSTOMER_TBL';
+
+
+select * from dba_objects where OBJECT_NAME in (select name from dba_dependencies where referenced_name='BMS_CUSTOMER_TBL');
+select * from dba_dependencies ;
+
+
+CREATE TABLESPACE SIMS_DBMAN
+DATAFILE '/u01/app/oracle/oradata/SIMSDEV/SIMS_DBMAN01.dbf'
+SIZE 8G;
+
+drop tablespace SIMS_DBMAN_TEST INCLUDING CONTENTS AND DATAFILES
+CASCADE CONSTRAINTS;
+
+select * from dba_data_files;
+
+
+oracle installations:
+Oracle refresh
+
+LTs reports - Hold lo unay
